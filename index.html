@@ -1,12 +1,348 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grasshopper Local — Get Found on Google. Automatically.</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grasshopper Suite — Business OS for Local Businesses</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #080c14;
+      color: #e0e6f0;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── Navigation ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(8,12,20,0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    nav .container {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 68px;
+    }
+    nav .logo {
+      font-size: 1.4rem; font-weight: 700; letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #6ee7b7, #3b82f6);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    nav .logo span { font-weight: 300; }
+    nav .links a {
+      color: #8892a4; text-decoration: none; font-size: 0.9rem; font-weight: 500;
+      margin-left: 28px; transition: color 0.2s;
+    }
+    nav .links a:hover { color: #6ee7b7; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 28px; border-radius: 10px;
+      font-size: 0.9rem; font-weight: 600; text-decoration: none;
+      transition: all 0.2s; cursor: pointer; border: none;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #6ee7b7, #3b82f6);
+      color: #080c14;
+    }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(110,231,183,0.2); }
+    .btn-outline {
+      border: 1px solid rgba(255,255,255,0.15); color: #e0e6f0; background: transparent;
+    }
+    .btn-outline:hover { border-color: #6ee7b7; color: #6ee7b7; }
+
+    /* ── Hero ── */
+    .hero {
+      padding: 140px 0 80px;
+      text-align: center;
+      position: relative;
+    }
+    .hero::before {
+      content: ''; position: absolute; top: -40%; left: 50%; transform: translateX(-50%);
+      width: 800px; height: 800px;
+      background: radial-gradient(circle, rgba(110,231,183,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero .tag {
+      display: inline-block; padding: 6px 16px; border-radius: 100px;
+      background: rgba(110,231,183,0.1); color: #6ee7b7;
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.5px;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: 3.8rem; font-weight: 800; letter-spacing: -2px;
+      background: linear-gradient(135deg, #fff 30%, #6ee7b7, #3b82f6);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      line-height: 1.1; margin-bottom: 20px;
+    }
+    .hero p {
+      font-size: 1.2rem; color: #8892a4; max-width: 650px; margin: 0 auto 36px;
+    }
+    .hero .actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    /* ── Services ── */
+    .section { padding: 80px 0; }
+    .section-label {
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 1px;
+      color: #6ee7b7; text-transform: uppercase; margin-bottom: 12px;
+    }
+    .section h2 {
+      font-size: 2.4rem; font-weight: 700; letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+    .section .subtitle { color: #8892a4; font-size: 1.05rem; max-width: 600px; }
+
+    .services-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 24px; margin-top: 48px;
+    }
+    .service-card {
+      background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(255,255,255,0.06));
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px; padding: 32px;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .service-card:hover { transform: translateY(-4px); border-color: rgba(110,231,183,0.3); }
+    .service-card .icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; margin-bottom: 20px;
+    }
+    .service-card:nth-child(1) .icon { background: rgba(59,130,246,0.15); color: #3b82f6; }
+    .service-card:nth-child(2) .icon { background: rgba(110,231,183,0.15); color: #6ee7b7; }
+    .service-card:nth-child(3) .icon { background: rgba(251,191,36,0.15); color: #fbbf24; }
+    .service-card:nth-child(4) .icon { background: rgba(236,72,153,0.15); color: #ec4899; }
+    .service-card .status {
+      display: inline-block; padding: 3px 10px; border-radius: 100px;
+      font-size: 0.7rem; font-weight: 600; margin-bottom: 12px;
+    }
+    .status-live { background: rgba(110,231,183,0.15); color: #6ee7b7; }
+    .status-beta { background: rgba(59,130,246,0.15); color: #3b82f6; }
+    .status-soon { background: rgba(255,255,255,0.08); color: #8892a4; }
+    .service-card h3 { font-size: 1.3rem; font-weight: 600; margin-bottom: 10px; }
+    .service-card p { color: #8892a4; font-size: 0.9rem; margin-bottom: 16px; }
+    .service-card .price { font-size: 1.1rem; font-weight: 700; color: #6ee7b7; }
+    .service-card .price small { font-weight: 400; font-size: 0.85rem; color: #8892a4; }
+    .service-card .features { list-style: none; margin-top: 16px; }
+    .service-card .features li {
+      padding: 6px 0; font-size: 0.85rem; color: #a0aab8;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .service-card .features li::before { content: '✓'; color: #6ee7b7; font-weight: 700; }
+
+    /* ── Dashboard Preview ── */
+    .dashboard-preview {
+      background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(255,255,255,0.06));
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px; padding: 40px; margin-top: 48px;
+    }
+    .dashboard-preview .mock {
+      background: #0f1520; border-radius: 12px; padding: 24px; margin-top: 20px;
+      font-family: 'Courier New', monospace; font-size: 0.85rem;
+    }
+    .dashboard-preview .mock .header { color: #6ee7b7; margin-bottom: 12px; }
+    .dashboard-preview .mock .row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .dashboard-preview .mock .row span:first-child { color: #8892a4; }
+    .dashboard-preview .mock .row span:last-child { color: #e0e6f0; font-weight: 500; }
+    .dashboard-preview .mock .overdue { color: #f87171; }
+
+    /* ── Pricing ── */
+    .pricing-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px; margin-top: 48px;
+    }
+    .pricing-card {
+      background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(255,255,255,0.06));
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px; padding: 32px; text-align: center;
+    }
+    .pricing-card.featured {
+      border-color: rgba(110,231,183,0.3);
+      position: relative;
+    }
+    .pricing-card.featured::before {
+      content: 'Best Value'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+      background: #6ee7b7; color: #080c14; padding: 4px 16px; border-radius: 100px;
+      font-size: 0.75rem; font-weight: 700;
+    }
+    .pricing-card h4 { font-size: 1rem; font-weight: 600; color: #8892a4; margin-bottom: 8px; }
+    .pricing-card .price-big { font-size: 2.8rem; font-weight: 800; color: #fff; }
+    .pricing-card .price-big small { font-size: 1rem; font-weight: 400; color: #8892a4; }
+    .pricing-card .desc { color: #8892a4; font-size: 0.85rem; margin: 12px 0 24px; }
+    .pricing-card .btn { width: 100%; justify-content: center; }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 40px 0; text-align: center;
+    }
+    footer p { color: #8892a4; font-size: 0.85rem; }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.2rem; }
+      .hero p { font-size: 1rem; }
+      .services-grid { grid-template-columns: 1fr; }
+      nav .links { display: none; }
+    }
+  </style>
 </head>
 <body>
-    <h1>Grasshopper Local</h1>
-    <p>Coming soon — AI-powered local SEO for Iowa businesses.</p>
+  <nav>
+    <div class="container">
+      <a href="/" class="logo">Grasshopper<span>Suite</span></a>
+      <div class="links">
+        <a href="#services">Services</a>
+        <a href="#pricing">Pricing</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="mailto:help@grasshopperlocal.com">Contact</a>
+        <a href="collect.html" class="btn btn-primary" style="margin-left:28px; padding:8px 20px;">Get Started</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="container">
+      <div class="tag">✦ Automated Business OS</div>
+      <h1>Run your business.<br>We handle the rest.</h1>
+      <p>AI-powered services that automate your local SEO, chase your invoices, and keep your business running — so you can focus on what matters.</p>
+      <div class="actions">
+        <a href="collect.html" class="btn btn-primary">Start with Collect →</a>
+        <a href="#services" class="btn btn-outline">See All Services</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section-label">Our Services</div>
+      <h2>The Grasshopper Suite</h2>
+      <p class="subtitle">Everything your local business needs to grow — automated and done-for-you at $79/mo each.</p>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="icon">🌐</div>
+          <div class="status status-live">● Live</div>
+          <h3>Grasshopper Local</h3>
+          <p>Done-for-you local SEO — citations, profiles, GBP posts, and content. Get found on Google automatically.</p>
+          <div class="price">$79 <small>/mo</small></div>
+          <ul class="features">
+            <li>170+ directory citations</li>
+            <li>7 social profiles</li>
+            <li>Weekly GBP posts</li>
+            <li>Blog content</li>
+            <li>Review management</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="icon">💰</div>
+          <div class="status status-live">● Live</div>
+          <h3>Grasshopper Collect</h3>
+          <p>Automated invoice chasing — never chase a late payment again. Escalating reminders sent via email.</p>
+          <div class="price">$79 <small>/mo</small></div>
+          <ul class="features">
+            <li>Daily automated reminders</li>
+            <li>4 escalation levels</li>
+            <li>Payment links in every email</li>
+            <li>Weekly aging reports</li>
+            <li>Client dashboard</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="icon">📊</div>
+          <div class="status status-soon">○ Coming Soon</div>
+          <h3>Grasshopper Pulse</h3>
+          <p>Business health monitoring — reviews, ratings, competitors, and market insights in one dashboard.</p>
+          <div class="price">$79 <small>/mo</small></div>
+          <ul class="features">
+            <li>Review monitoring</li>
+            <li>Competitor tracking</li>
+            <li>Weekly health score</li>
+            <li>Market insights</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="icon">✓</div>
+          <div class="status status-soon">○ Coming Soon</div>
+          <h3>Grasshopper Comply</h3>
+          <p>Regulatory compliance tracking — never miss a license renewal, permit, or filing deadline again.</p>
+          <div class="price">$79 <small>/mo</small></div>
+          <ul class="features">
+            <li>License renewal tracking</li>
+            <li>Deadline reminders</li>
+            <li>Form pre-fill</li>
+            <li>Compliance calendar</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-label">Client Portal</div>
+      <h2>Your Dashboard</h2>
+      <p class="subtitle">Every client gets a private dashboard showing their services, aging reports, and key metrics.</p>
+
+      <div class="dashboard-preview">
+        <h3 style="font-size:1.1rem; font-weight:600;">📊 Demo Preview — Smith Landscaping</h3>
+        <div class="mock">
+          <div class="header"># Accounts Receivable Summary — Jul 23, 2026</div>
+          <div class="row"><span>Total Outstanding</span><span>$4,300.00</span></div>
+          <div class="row"><span>Invoices Due</span><span>2</span></div>
+          <div class="row"><span>Overdue</span><span class="overdue">$2,500.00</span></div>
+          <div style="margin-top:16px; padding-top:12px; border-top:1px solid rgba(255,255,255,0.06);"></div>
+          <div class="row"><span>INV-2026-1001</span><span class="overdue">$2,500 — 8 days overdue</span></div>
+          <div class="row"><span>INV-2026-1002</span><span>$1,800 — 3 days overdue</span></div>
+        </div>
+        <a href="dashboard.html" class="btn btn-outline" style="margin-top:20px;">Go to Dashboard →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="pricing">
+    <div class="container">
+      <div class="section-label">Simple Pricing</div>
+      <h2>One price per service</h2>
+      <p class="subtitle">$79/mo each. Stack them. No contracts. 14-day free trial on every service.</p>
+
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <h4>Single Service</h4>
+          <div class="price-big">$79 <small>/mo</small></div>
+          <p class="desc">Choose Local, Collect, or any single service</p>
+          <a href="collect.html" class="btn btn-outline">Get Started</a>
+        </div>
+
+        <div class="pricing-card featured">
+          <h4>Business Suite</h4>
+          <div class="price-big">$158 <small>/mo</small></div>
+          <p class="desc">Local + Collect. Save $79/mo over separate.</p>
+          <a href="collect.html" class="btn btn-primary">Get the Bundle</a>
+        </div>
+
+        <div class="pricing-card">
+          <h4>Full Stack</h4>
+          <div class="price-big">$237 <small>/mo</small></div>
+          <p class="desc">All services. Everything automated.</p>
+          <a href="collect.html" class="btn btn-outline">Get Everything</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Young Grasshopper LLC — Grasshopper Suite</p>
+      <p style="margin-top:8px; font-size:0.8rem;">
+        <a href="mailto:help@grasshopperlocal.com" style="color:#6ee7b7; text-decoration:none;">help@grasshopperlocal.com</a>
+      </p>
+    </div>
+  </footer>
 </body>
 </html>
