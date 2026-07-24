@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog — Grasshopper Local | Local SEO Tips for Iowa Businesses</title>
+    <meta name="description" content="Practical local SEO tips, guides, and strategies for Iowa small business owners. From Grasshopper Local.">
+    <meta name="robots" content="index, follow">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #fafafa; color: #1a1a2e; line-height: 1.6; }
+        .container { max-width: 720px; margin: 0 auto; padding: 24px; }
+        header { background: #1b4332; color: white; padding: 32px 24px; text-align: center; }
+        header h1 { font-size: 1.8rem; margin-bottom: 8px; }
+        header p { opacity: 0.85; font-size: 0.95rem; }
+        header a { color: #95d5b2; text-decoration: none; }
+        header a:hover { text-decoration: underline; }
+        .post { background: white; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 16px; transition: box-shadow 0.2s; }
+        .post:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+        .post h2 { font-size: 1.2rem; margin-bottom: 6px; }
+        .post h2 a { color: #1a1a2e; text-decoration: none; }
+        .post h2 a:hover { color: #2d6a4f; }
+        .post .meta { font-size: 0.85rem; color: #888; margin-bottom: 8px; }
+        .post p { font-size: 0.9rem; color: #555; }
+        .empty { text-align: center; padding: 60px 24px; color: #888; }
+        footer { text-align: center; padding: 24px; color: #999; font-size: 0.85rem; }
+        footer a { color: #2d6a4f; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>📝 Grasshopper Local Blog</h1>
+            <p>Local SEO tips, guides, and strategies for Iowa small business owners</p>
+            <p><a href="https://grasshopperlocal.com">← Back to Grasshopper Local</a></p>
+        </div>
+    </header>
+    <main class="container">
+        <div id="posts">
+            <div class="empty">Loading posts...</div>
+        </div>
+    </main>
+    <footer>
+        <p>Grasshopper Local — a <a href="https://grasshopperlocal.com">Young Grasshopper LLC</a> company</p>
+        <p>© 2026 Young Grasshopper LLC. All rights reserved.</p>
+        <p><a href="mailto:help@grasshopperlocal.com">help@grasshopperlocal.com</a></p>
+    </footer>
+    <script>
+        // Auto-discover blog posts from directory listing
+        const postsList = document.getElementById('posts');
+        const knownPosts = [
+            {title: "How New Iowa Businesses Can Get Found on Google in 30 Days", file: "how-new-iowa-businesses-can-get-found-on-google-in.html", date: "2026-07-24", desc: "A complete guide for new Iowa businesses to start ranking on Google without spending thousands on ads."},
+            {title: "5 Free Local SEO Tools Every Iowa Small Business Should Use", file: "5-free-local-seo-tools-every-iowa-small-business-s.html", date: "2026-07-24", desc: "You don't need expensive tools to rank locally. Here are 5 completely free tools that work."},
+        ];
+        
+        if (knownPosts.length === 0) {
+            postsList.innerHTML = '<div class="empty">📭 No blog posts yet. Check back soon!</div>';
+        } else {
+            postsList.innerHTML = knownPosts.map(post => `
+                <article class="post">
+                    <h2><a href="./${post.file}">${post.title}</a></h2>
+                    <div class="meta">📅 ${post.date} &bull; Grasshopper Local</div>
+                    <p>${post.desc}</p>
+                </article>
+            `).join('');
+        }
+    </script>
+</body>
+</html>
