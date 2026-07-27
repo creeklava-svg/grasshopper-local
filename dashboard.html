@@ -159,6 +159,25 @@
           { number: "INV-2026-1001", amount: 2500.00, due: "2026-07-15", status: "pending" },
           { number: "INV-2026-1002", amount: 1800.00, due: "2026-07-20", status: "pending" }
         ]
+      },
+      "GRASSHOPPER-001": {
+        name: "Grasshopper Local",
+        contact: "Ryan (Owner)",
+        services: ["Local", "Collect", "Pulse", "Comply"],
+        pulse_score: 72,
+        pulse_trend: "+12",
+        progress: {
+          citations_prepared: 15,
+          blog_posts: 3,
+          cold_emails_sent: 2,
+          prospects_found: 6,
+          directories_account_created: 1,
+          directories_form_filled: 2
+        },
+        invoices: [
+          { number: "INV-2026-1001", amount: 2500.00, due: "2026-07-15", status: "pending" },
+          { number: "INV-2026-1002", amount: 1800.00, due: "2026-07-20", status: "pending" }
+        ]
       }
     };
 
@@ -227,7 +246,6 @@
       client.services.forEach(s => {
         svcHtml += '<span class="service-badge active">✓ ' + s + '</span>';
       });
-      // Show upcoming services as available upgrades
       const allServices = ['Local', 'Collect', 'Pulse', 'Comply'];
       allServices.forEach(s => {
         if (!client.services.includes(s)) {
@@ -235,6 +253,22 @@
         }
       });
       document.getElementById('servicesList').innerHTML = svcHtml;
+
+      // ── Progress metrics (Grasshopper Local admin view) ──
+      if (client.progress) {
+        const p = client.progress;
+        let progressHtml = '<div class="table-section"><h3>📈 Build Progress</h3><table><thead><tr><th>Metric</th><th>Done</th><th>Target</th></tr></thead><tbody>' +
+          '<tr><td>Directory citations</td><td>' + p.citations_prepared + '</td><td>170</td></tr>' +
+          '<tr><td>Blog posts</td><td>' + p.blog_posts + '</td><td>12</td></tr>' +
+          '<tr><td>Cold emails sent</td><td>' + p.cold_emails_sent + '</td><td>50</td></tr>' +
+          '<tr><td>Prospects in pipeline</td><td>' + p.prospects_found + '</td><td>100</td></tr>' +
+          '<tr><td>Directories with accounts</td><td>' + p.directories_account_created + '</td><td>20</td></tr>' +
+          '<tr><td>Forms submitted</td><td>' + p.directories_form_filled + '</td><td>20</td></tr>' +
+          '</tbody></table></div>';
+        // Insert after services section
+        const servicesSection = document.getElementById('servicesList').closest('.table-section');
+        servicesSection.insertAdjacentHTML('afterend', progressHtml);
+      }
 
       // Upsell
       const hasAll = client.services.length >= 4;
