@@ -3,25 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Grasshopper Collect — Automated Invoice Chasing | Grasshopper Local</title>
+  <title>Grasshopper Comply — License & Compliance Tracking | Grasshopper Local</title>
   <style>
-    body { background: #080c14; color: #e0e6f0; font-family: 'Inter', sans-serif; }
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+    body { background: #080c14; color: #e0e6f0; font-family: 'Inter', sans-serif; margin: 0; }
     .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
     nav { background: rgba(8,12,20,0.85); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.06); position: fixed; top: 0; left: 0; right: 0; z-index: 100; }
     nav .container { display: flex; align-items: center; justify-content: space-between; height: 68px; }
-    nav a { color: #8892a4; text-decoration: none; font-size: 0.9rem; }
-    nav .logo { font-size: 1.4rem; font-weight: 700; background: linear-gradient(135deg, #6ee7b7, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; }
+    nav a { color: #8892a4; text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+    nav a:hover { color: #6ee7b7; }
+    nav .logo { font-size: 1.4rem; font-weight: 700; background: linear-gradient(135deg, #6ee7b7, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; border-radius: 10px; font-size: 0.9rem; font-weight: 600; text-decoration: none; transition: all 0.2s; cursor: pointer; border: none; }
     .btn-primary { background: linear-gradient(135deg, #6ee7b7, #3b82f6); color: #080c14; }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(110,231,183,0.2); }
     .btn-outline { border: 1px solid rgba(255,255,255,0.15); color: #e0e6f0; background: transparent; }
+    .btn-outline:hover { border-color: #6ee7b7; color: #6ee7b7; }
 
     .hero { padding: 140px 0 60px; text-align: center; }
-    .hero h1 { font-size: 3.2rem; font-weight: 800; letter-spacing: -2px; background: linear-gradient(135deg, #fff, #6ee7b7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1.1; margin-bottom: 16px; }
+    .hero h1 { font-size: 3.2rem; font-weight: 800; letter-spacing: -2px; background: linear-gradient(135deg, #fff, #ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1.1; margin-bottom: 16px; }
     .hero p { font-size: 1.15rem; color: #8892a4; max-width: 600px; margin: 0 auto 32px; }
+    .badge-soon { display: inline-block; padding: 4px 14px; border-radius: 100px; background: rgba(236,72,153,0.15); color: #ec4899; font-size: 0.8rem; font-weight: 600; margin-bottom: 16px; }
 
     .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; margin: 48px 0; }
     .step { text-align: center; padding: 24px; }
-    .step .num { width: 48px; height: 48px; border-radius: 50%; background: rgba(110,231,183,0.1); color: #6ee7b7; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.2rem; margin: 0 auto 16px; }
+    .step .num { width: 48px; height: 48px; border-radius: 50%; background: rgba(236,72,153,0.1); color: #ec4899; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.2rem; margin: 0 auto 16px; }
     .step h3 { font-size: 1.1rem; margin-bottom: 8px; }
     .step p { font-size: 0.85rem; color: #8892a4; }
 
@@ -33,7 +38,7 @@
     .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 32px; }
     .card { background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(255,255,255,0.06)); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 24px; }
     .card h3 { font-size: 1.1rem; margin-bottom: 12px; }
-    .card ul { list-style: none; }
+    .card ul { list-style: none; padding: 0; }
     .card ul li { padding: 6px 0; font-size: 0.85rem; color: #8892a4; display: flex; align-items: center; gap: 8px; }
     .card ul li::before { content: '✓'; color: #6ee7b7; font-weight: 700; }
 
@@ -49,50 +54,51 @@
       <div style="display:flex; gap:20px; align-items:center;">
         <a href="/">Home</a>
         <a href="local.html">Local</a>
+        <a href="collect.html">Collect</a>
         <a href="pulse.html">Pulse</a>
-        <a href="comply.html">Comply</a>
         <a href="dashboard.html">Dashboard</a>
         <a href="contact.html">Contact</a>
-        <a href="https://app.younggrasshopper.io?plan=collect" class="btn btn-primary" style="padding:8px 20px;">Try Free Demo</a>
+        <a href="https://app.younggrasshopper.io/" class="btn btn-outline" style="padding:8px 20px;">Try Free Demo</a>
       </div>
     </div>
   </nav>
 
   <section class="hero">
     <div class="container">
-      <div style="font-size:0.8rem; color:#6ee7b7; font-weight:600; letter-spacing:1px; text-transform:uppercase; margin-bottom:12px;">Grasshopper Collect</div>
-      <h1>Never chase a late payment again.</h1>
-      <p>We send automated, escalating reminders to your customers — via email — so you get paid faster without lifting a finger. $79/mo, 14-day free trial.</p>
-      <a href="https://app.younggrasshopper.io?plan=collect" class="btn btn-primary">Try Free Demo →</a>
+      <div class="badge-soon">🛡️ Coming Soon</div>
+      <div style="font-size:0.8rem; color:#ec4899; font-weight:600; letter-spacing:1px; text-transform:uppercase; margin-bottom:12px;">Grasshopper Comply</div>
+      <h1>Never miss a deadline.<br>Stay compliant.</h1>
+      <p>Track every license, permit, and filing deadline your business holds. Get alerts 90, 60, and 30 days before anything expires. We even prepare the paperwork — you review and submit.</p>
+      <a href="https://app.younggrasshopper.io/" class="btn btn-outline">Join the Waitlist →</a>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
       <div style="text-align:center;">
-        <div style="font-size:0.8rem; color:#6ee7b7; font-weight:600; letter-spacing:1px; text-transform:uppercase; margin-bottom:8px;">How It Works</div>
-        <h2 style="font-size:1.8rem; font-weight:700;">Your automated AR machine</h2>
+        <div style="font-size:0.8rem; color:#ec4899; font-weight:600; letter-spacing:1px; text-transform:uppercase; margin-bottom:8px;">How It Works</div>
+        <h2 style="font-size:1.8rem; font-weight:700;">Your compliance, handled</h2>
       </div>
       <div class="steps">
         <div class="step">
           <div class="num">1</div>
-          <h3>Connect Your Invoices</h3>
-          <p>Send us your outstanding invoices. We handle the rest from there.</p>
+          <h3>Tell Us Your Business Type</h3>
+          <p>Landscaper, plumber, restaurant — whatever you do, we look up what your business needs to stay legal in Iowa.</p>
         </div>
         <div class="step">
           <div class="num">2</div>
-          <h3>We Send Reminders</h3>
-          <p>Daily escalating emails go out automatically — friendly → polite → firm → final.</p>
+          <h3>We Build Your Checklist</h3>
+          <p>Every license, permit, insurance, and filing you need — in one place with deadlines and renewal dates.</p>
         </div>
         <div class="step">
           <div class="num">3</div>
-          <h3>They Pay</h3>
-          <p>Every email includes a payment link. Your customers pay with one click.</p>
+          <h3>We Alert You Before They Expire</h3>
+          <p>90, 60, and 30-day warnings. Never get caught by surprise with a lapsed license or missed filing.</p>
         </div>
         <div class="step">
           <div class="num">4</div>
-          <h3>You Get Reports</h3>
-          <p>Weekly aging reports show exactly who's paid and who hasn't.</p>
+          <h3>We Prepare the Paperwork</h3>
+          <p>Document templates filled with your business info. You review, approve, and submit — we never auto-file.</p>
         </div>
       </div>
     </div>
@@ -101,40 +107,40 @@
   <section class="section">
     <div class="container">
       <div style="text-align:center; margin-bottom:32px;">
-        <div style="font-size:0.8rem; color:#6ee7b7; font-weight:600; letter-spacing:1px; text-transform:uppercase; margin-bottom:8px;">Features</div>
+        <div style="font-size:0.8rem; color:#ec4899; font-weight:600; letter-spacing:1px; text-transform:uppercase; margin-bottom:8px;">Features</div>
         <h2 style="font-size:1.8rem; font-weight:700;">Everything included</h2>
       </div>
       <div class="grid-2">
         <div class="card">
-          <h3>📧 Smart Email Sequences</h3>
+          <h3>📋 Deadline Tracking</h3>
           <ul>
-            <li>4 escalation levels automated</li>
-            <li>Payment link in every message</li>
-            <li>Stops when they pay</li>
+            <li>Licenses, permits, insurance, filings</li>
+            <li>Visual status: past due, urgent, coming, current</li>
+            <li>Quick-add library for common items</li>
           </ul>
         </div>
         <div class="card">
-          <h3>📈 Weekly Reports</h3>
+          <h3>🔔 Smart Alerts</h3>
           <ul>
-            <li>Aging breakdown by client</li>
-            <li>Payment tracking</li>
-            <li>Emailed every Monday</li>
+            <li>90/60/30-day advance warnings</li>
+            <li>Email + dashboard notifications</li>
+            <li>Never miss a renewal again</li>
           </ul>
         </div>
         <div class="card">
-          <h3>🔗 Stripe Payment Links</h3>
+          <h3>📄 Document Templates</h3>
           <ul>
-            <li>One-click payments</li>
-            <li>Secure checkout</li>
-            <li>Instant confirmation</li>
+            <li>Onboarding packs, contracts, waivers</li>
+            <li>Auto-filled with your business info</li>
+            <li>Customizable per business type</li>
           </ul>
         </div>
         <div class="card">
-          <h3>📊 Client Dashboard</h3>
+          <h3>🤖 Business-Type Intelligence</h3>
           <ul>
-            <li>Private client portal</li>
-            <li>Real-time aging view</li>
-            <li>Payment history</li>
+            <li>Tell us "pet shop" — we research what you need</li>
+            <li>Works for ANY business type, not just pre-loaded</li>
+            <li>Knowledge base grows as customers join</li>
           </ul>
         </div>
       </div>
@@ -144,20 +150,19 @@
   <section class="section">
     <div class="container">
       <div class="pricing-card">
-        <div style="font-size:0.8rem; color:#6ee7b7; font-weight:600; text-transform:uppercase;">One Price</div>
-        <div class="price-big">$79 <small>/mo</small></div>
+        <div style="font-size:0.8rem; color:#ec4899; font-weight:600; text-transform:uppercase;">Coming Soon</div>
+        <div class="price-big">$29 <small>/mo</small></div>
         <p style="color:#8892a4; margin-bottom:24px;">14-day free trial. No contracts. Cancel anytime.</p>
-        <a href="https://app.younggrasshopper.io?plan=collect" class="btn btn-primary">Try Free Demo →</a>
-        <p style="color:#5a6478; font-size:0.8rem; margin-top:12px;">Free demo — no credit card needed. <a href="https://app.younggrasshopper.io?plan=collect" style="color:#6ee7b7;">Try it now →</a></p>
+        <a href="https://app.younggrasshopper.io/" class="btn btn-outline">Join the Waitlist →</a>
       </div>
     </div>
   </section>
 
   <section class="cta">
     <div class="container">
-      <h2>Ready to stop chasing payments?</h2>
-      <p>Join other Iowa businesses using the Grasshopper Local.</p>
-      <a href="https://app.younggrasshopper.io?plan=collect" class="btn btn-primary">Try Free Demo →</a>
+      <h2>Ready to stay compliant?</h2>
+      <p>Join the waitlist and be first to know when Grasshopper Comply launches.</p>
+      <a href="https://app.younggrasshopper.io/" class="btn btn-primary">Join the Waitlist →</a>
     </div>
   </section>
 
