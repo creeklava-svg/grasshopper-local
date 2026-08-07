@@ -133,21 +133,50 @@
     }
     .service-card .features li::before { content: '✓'; color: #6ee7b7; font-weight: 700; }
 
-    /* ── Dashboard Preview ── */
-    .dashboard-preview {
+    /* ── App Preview ── */
+    .app-preview {
       background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(255,255,255,0.06));
       border: 1px solid rgba(255,255,255,0.08);
       border-radius: 16px; padding: 40px; margin-top: 48px;
     }
-    .dashboard-preview .mock {
-      background: #0f1520; border-radius: 12px; padding: 24px; margin-top: 20px;
-      font-family: 'Courier New', monospace; font-size: 0.85rem;
+    .app-mock {
+      background: #0d1117; border-radius: 12px; overflow: hidden; margin-top: 20px;
+      border: 1px solid rgba(255,255,255,0.06);
+      display: flex; min-height: 420px;
     }
-    .dashboard-preview .mock .header { color: #6ee7b7; margin-bottom: 12px; }
-    .dashboard-preview .mock .row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
-    .dashboard-preview .mock .row span:first-child { color: #8892a4; }
-    .dashboard-preview .mock .row span:last-child { color: #e0e6f0; font-weight: 500; }
-    .dashboard-preview .mock .overdue { color: #f87171; }
+    .app-mock-sidebar {
+      width: 220px; background: #161b22; border-right: 1px solid rgba(255,255,255,0.06);
+      padding: 20px 16px; display: flex; flex-direction: column;
+    }
+    .app-mock-sidebar .sb-logo { font-size: 0.9rem; font-weight: 700; color: #6ee7b7; margin-bottom: 24px; }
+    .app-mock-sidebar .sb-nav { display: flex; gap: 8px; align-items: center; padding: 8px 10px; font-size: 0.8rem; color: #8b949e; margin-bottom: 6px; border-radius: 6px; }
+    .app-mock-sidebar .sb-nav.active { background: rgba(110,231,183,0.1); color: #6ee7b7; }
+    .app-mock-sidebar .sb-label { font-size: 0.65rem; text-transform: uppercase; color: #5a6478; letter-spacing: 0.5px; margin: 16px 0 8px 10px; }
+    .app-mock-sidebar .sb-prod { display: flex; gap: 6px; align-items: center; padding: 6px 10px; font-size: 0.75rem; color: #a0aab8; }
+    .app-mock-sidebar .sb-prod::before { content: '●'; color: #6ee7b7; font-size: 0.6rem; }
+    .app-mock-sidebar .sb-foot { margin-top: auto; font-size: 0.65rem; color: #5a6478; text-align: center; }
+    .app-mock-main { flex: 1; padding: 24px; overflow: hidden; }
+    .app-mock-main .mb-bar { font-size: 0.75rem; color: #5a6478; margin-bottom: 20px; }
+    .app-mock-main .mb-bar span { color: #e0e6f0; font-weight: 600; }
+    .app-mock-main .mb-h1 { font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 4px; }
+    .app-mock-main .mb-sub { font-size: 0.75rem; color: #5a6478; margin-bottom: 20px; }
+    .app-mock-card { background: #161b22; border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; padding: 16px; margin-bottom: 16px; }
+    .app-mock-card .mh { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+    .app-mock-card .mh .mt { font-size: 0.85rem; font-weight: 600; color: #fff; }
+    .app-mock-card .mh .mb { font-size: 0.6rem; padding: 2px 8px; border-radius: 4px; background: rgba(110,231,183,0.1); color: #6ee7b7; text-transform: uppercase; font-weight: 700; }
+    .app-mock-card .mh .ml { font-size: 0.7rem; color: #3b82f6; text-decoration: none; }
+    .app-mock-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 12px; }
+    .app-mock-stat { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.04); border-radius: 6px; padding: 10px; }
+    .app-mock-stat .nv { font-size: 1rem; font-weight: 700; color: #6ee7b7; display: block; }
+    .app-mock-stat .nl { font-size: 0.55rem; color: #5a6478; text-transform: uppercase; letter-spacing: 0.5px; }
+    .app-mock-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 16px; }
+    .app-mock-upsell { background: #161b22; border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 12px; display: flex; flex-direction: column; gap: 6px; }
+    .app-mock-upsell .up { font-size: 0.9rem; font-weight: 700; color: #6ee7b7; }
+    .app-mock-upsell .ut { font-size: 0.7rem; font-weight: 600; color: #fff; }
+    .app-mock-upsell .ud { font-size: 0.6rem; color: #5a6478; line-height: 1.3; }
+    .app-mock-upsell .ub { font-size: 0.6rem; padding: 4px 8px; border-radius: 4px; background: rgba(110,231,183,0.15); color: #6ee7b7; text-align: center; margin-top: 4px; }
+    .app-mock-upsell .ub.blue { background: rgba(59,130,246,0.15); color: #3b82f6; }
+    .app-mock-h2 { font-size: 0.9rem; font-weight: 600; color: #fff; margin: 16px 0 10px; }
 
     /* ── Pricing ── */
     .pricing-grid {
@@ -186,6 +215,12 @@
       .hero p { font-size: 1rem; }
       .services-grid { grid-template-columns: 1fr; }
       nav .links { display: none; }
+      .app-mock { flex-direction: column; min-height: auto; }
+      .app-mock-sidebar { width: 100%; flex-direction: row; flex-wrap: wrap; gap: 8px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
+      .app-mock-sidebar .sb-label, .app-mock-sidebar .sb-foot { display: none; }
+      .app-mock-sidebar .sb-nav { margin-bottom: 0; }
+      .app-mock-stats { grid-template-columns: repeat(2, 1fr); }
+      .app-mock-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -212,10 +247,9 @@
     <div class="container">
       <div class="tag">✦ Automated Business OS</div>
       <h1>Run your business.<br>We handle the rest.</h1>
-      <p>AI-powered services that automate your local SEO, chase your invoices, and keep your business running — so you can focus on what matters.</p>
+      <p>We help you get found on Google, get paid faster, and stay on top of your business — all on autopilot. No tech skills needed. Just sign up, and we do the work.</p>
       <div class="actions">
-        <a href="local.html" class="btn btn-primary">Start with Local →</a>
-        <a href="collect.html" class="btn btn-outline">Try Collect →</a>
+        <a href="#services" class="btn btn-primary">See Our Products →</a>
       </div>
     </div>
   </section>
@@ -231,7 +265,7 @@
           <div class="icon">🌐</div>
           <div class="status status-live">● Live</div>
           <h3>Grasshopper Local</h3>
-          <p>Done-for-you local SEO — citations, profiles, GBP posts, and content. Get found on Google automatically.</p>
+          <p>We get your business found on Google. We list you on 170+ directories, manage your Google profile, and write content — so customers find you first.</p>
           <div class="price">$79 <small>/mo</small></div>
           <ul class="features">
             <li>170+ directory citations</li>
@@ -276,7 +310,7 @@
           <div class="icon">✓</div>
           <div class="status status-soon">○ Coming Soon</div>
           <h3>Grasshopper Comply</h3>
-          <p>Regulatory compliance tracking — never miss a license renewal, permit, or filing deadline again.</p>
+          <p>We track every license, permit, and filing deadline your business holds — and alert you before anything expires. We even prepare the paperwork.</p>
           <div class="price">$29 <small>/mo</small></div>
           <ul class="features">
             <li>License & permit tracking</li>
@@ -292,22 +326,77 @@
 
   <section class="section">
     <div class="container">
-      <div class="section-label">Client Portal</div>
-      <h2>Your Dashboard</h2>
-      <p class="subtitle">Every client gets a private dashboard showing their services, aging reports, and key metrics.</p>
+      <div class="section-label">Your App</div>
+      <h2>One app for everything</h2>
+      <p class="subtitle">When you sign up, you get the Grasshopper Local app — on your phone, tablet, or desktop. See your work, add products, and watch your business grow — all in one place.</p>
 
-      <div class="dashboard-preview">
-        <h3 style="font-size:1.1rem; font-weight:600;">📊 Demo Preview — Smith Landscaping</h3>
-        <div class="mock">
-          <div class="header"># Accounts Receivable Summary — Jul 23, 2026</div>
-          <div class="row"><span>Total Outstanding</span><span>$4,300.00</span></div>
-          <div class="row"><span>Invoices Due</span><span>2</span></div>
-          <div class="row"><span>Overdue</span><span class="overdue">$2,500.00</span></div>
-          <div style="margin-top:16px; padding-top:12px; border-top:1px solid rgba(255,255,255,0.06);"></div>
-          <div class="row"><span>INV-2026-1001</span><span class="overdue">$2,500 — 8 days overdue</span></div>
-          <div class="row"><span>INV-2026-1002</span><span>$1,800 — 3 days overdue</span></div>
+      <div class="app-preview">
+        <div class="app-mock">
+          <!-- Sidebar -->
+          <div class="app-mock-sidebar">
+            <div class="sb-logo">🦗 Grasshopper Local</div>
+            <div class="sb-nav active">📊 Dashboard</div>
+            <div class="sb-nav">🧩 Products</div>
+            <div class="sb-nav">⚙️ Settings</div>
+            <div class="sb-label">Your Products</div>
+            <div class="sb-prod">Grasshopper Local</div>
+            <div class="sb-foot">SMITH-001</div>
+          </div>
+          <!-- Main content -->
+          <div class="app-mock-main">
+            <div class="mb-bar"><span>Smith Landscaping</span> · SMITH-001</div>
+            <div class="mb-h1">Welcome back, Smith Landscaping</div>
+            <div class="mb-sub">Here's the work your Grasshopper assistant has been doing.</div>
+            <!-- Product card with stats -->
+            <div class="app-mock-card">
+              <div class="mh">
+                <div><span class="mt">Grasshopper Local</span> <span class="mb">Standard</span></div>
+                <a href="#" class="ml">Open page →</a>
+              </div>
+              <div class="app-mock-stats">
+                <div class="app-mock-stat"><span class="nv">74/100</span><span class="nl">Pulse Score</span></div>
+                <div class="app-mock-stat"><span class="nv">132</span><span class="nl">Citations</span></div>
+                <div class="app-mock-stat"><span class="nv">8</span><span class="nl">Blog Posts</span></div>
+                <div class="app-mock-stat"><span class="nv">45</span><span class="nl">Outreach</span></div>
+              </div>
+            </div>
+            <!-- Grow your suite -->
+            <div class="app-mock-h2">Grow your suite</div>
+            <div class="app-mock-grid">
+              <div class="app-mock-upsell">
+                <div class="up">$149/mo</div>
+                <div class="ut">Local Pro</div>
+                <div class="ud">Review generation, social, video scripts, hyperlocal outreach</div>
+                <div class="ub">Add Pro</div>
+              </div>
+              <div class="app-mock-upsell">
+                <div class="up">$79/mo</div>
+                <div class="ut">Grasshopper Collect</div>
+                <div class="ud">Automated invoice chasing with escalating reminders</div>
+                <div class="ub blue">Add Collect</div>
+              </div>
+              <div class="app-mock-upsell">
+                <div class="up">$19/mo</div>
+                <div class="ut">Grasshopper Pulse</div>
+                <div class="ud">Weekly business health monitoring</div>
+                <div class="ub blue">Add Pulse</div>
+              </div>
+              <div class="app-mock-upsell">
+                <div class="up">$29/mo</div>
+                <div class="ut">Grasshopper Comply</div>
+                <div class="ud">License & permit renewal tracking</div>
+                <div class="ub blue">Add Comply</div>
+              </div>
+              <div class="app-mock-upsell">
+                <div class="up">$299/mo</div>
+                <div class="ut">Local Max</div>
+                <div class="ud">Agent posts all content, manages ads, PR & partnerships</div>
+                <div class="ub">Add Max</div>
+              </div>
+            </div>
+          </div>
         </div>
-        <a href="dashboard.html" class="btn btn-outline" style="margin-top:20px;">Go to Dashboard →</a>
+        <a href="https://app.younggrasshopper.io/" class="btn btn-primary" style="margin-top:24px;">Try the App Free →</a>
       </div>
     </div>
   </section>
@@ -322,7 +411,7 @@
         <div class="pricing-card">
           <h4>Grasshopper Local</h4>
           <div class="price-big">$79 <small>/mo</small></div>
-          <p class="desc">Done-for-you local SEO — citations, GBP, content, and reviews</p>
+          <p class="desc">Get found on Google — directories, GBP, content, and reviews</p>
           <a href="local.html" class="btn btn-outline">Learn More</a>
         </div>
 
