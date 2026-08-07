@@ -169,14 +169,9 @@
     .app-mock-stat { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.04); border-radius: 6px; padding: 10px; }
     .app-mock-stat .nv { font-size: 1rem; font-weight: 700; color: #6ee7b7; display: block; }
     .app-mock-stat .nl { font-size: 0.55rem; color: #5a6478; text-transform: uppercase; letter-spacing: 0.5px; }
-    .app-mock-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 16px; }
-    .app-mock-upsell { background: #161b22; border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 12px; display: flex; flex-direction: column; gap: 6px; }
-    .app-mock-upsell .up { font-size: 0.9rem; font-weight: 700; color: #6ee7b7; }
-    .app-mock-upsell .ut { font-size: 0.7rem; font-weight: 600; color: #fff; }
-    .app-mock-upsell .ud { font-size: 0.6rem; color: #5a6478; line-height: 1.3; }
-    .app-mock-upsell .ub { font-size: 0.6rem; padding: 4px 8px; border-radius: 4px; background: rgba(110,231,183,0.15); color: #6ee7b7; text-align: center; margin-top: 4px; }
-    .app-mock-upsell .ub.blue { background: rgba(59,130,246,0.15); color: #3b82f6; }
     .app-mock-h2 { font-size: 0.9rem; font-weight: 600; color: #fff; margin: 16px 0 10px; }
+    .app-mock-feed { display: flex; flex-direction: column; gap: 8px; }
+    .app-mock-feed-item { display: flex; gap: 10px; align-items: center; font-size: 0.7rem; color: #a0aab8; padding: 8px 10px; background: rgba(255,255,255,0.02); border-radius: 6px; }
 
     /* ── Pricing ── */
     .pricing-grid {
@@ -220,7 +215,6 @@
       .app-mock-sidebar .sb-label, .app-mock-sidebar .sb-foot { display: none; }
       .app-mock-sidebar .sb-nav { margin-bottom: 0; }
       .app-mock-stats { grid-template-columns: repeat(2, 1fr); }
-      .app-mock-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -383,16 +377,10 @@
             </div>
             <!-- Recent activity feed -->
             <div class="app-mock-h2">Recent activity</div>
-            <div style="display:flex; flex-direction:column; gap:8px;">
-              <div style="display:flex; gap:10px; align-items:center; font-size:0.7rem; color:#a0aab8; padding:8px 10px; background:rgba(255,255,255,0.02); border-radius:6px;">
-                <span style="color:#6ee7b7;">✓</span> Submitted to 3 new directories — Yellow Pages, Bing Places, Houzz
-              </div>
-              <div style="display:flex; gap:10px; align-items:center; font-size:0.7rem; color:#a0aab8; padding:8px 10px; background:rgba(255,255,255,0.02); border-radius:6px;">
-                <span style="color:#fbbf24;">📝</span> Published blog post: "5 Signs Your HVAC Needs Maintenance"
-              </div>
-              <div style="display:flex; gap:10px; align-items:center; font-size:0.7rem; color:#a0aab8; padding:8px 10px; background:rgba(255,255,255,0.02); border-radius:6px;">
-                <span style="color:#f87171;">💸</span> Reminder sent to client — INV-1001, $2,500 (2nd escalation)
-              </div>
+            <div class="app-mock-feed">
+              <div class="app-mock-feed-item"><span style="color:#6ee7b7;">✓</span> Submitted to 3 new directories — Yellow Pages, Bing Places, Houzz</div>
+              <div class="app-mock-feed-item"><span style="color:#fbbf24;">📝</span> Published blog post: "5 Signs Your HVAC Needs Maintenance"</div>
+              <div class="app-mock-feed-item"><span style="color:#f87171;">💸</span> Reminder sent to client — INV-1001, $2,500 (2nd escalation)</div>
             </div>
           </div>
         </div>
