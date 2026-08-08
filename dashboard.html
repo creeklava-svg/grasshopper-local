@@ -52,7 +52,7 @@
 <body>
   <nav>
     <div class="container">
-      <a href="/" class="logo">Grasshopper Dojo</a>
+      <a href="/" class="logo" style="display:flex; flex-direction:column; align-items:flex-start; line-height:1.12; text-decoration:none; flex-shrink:0;"><span style="font-size:2.1rem; white-space:nowrap;">Grasshopper<span style="font-weight:300;">Dojo</span></span><span style="font-size:0.55rem; font-weight:500; letter-spacing:0.05em; color:#6f9c88; background:none; -webkit-text-fill-color:#6f9c88; margin-top:2px; white-space:nowrap;">a younggrasshopper llc company</span></a>
       <div class="nav-links">
         <a href="/">Home</a>
         <a href="#" id="logoutBtn" class="hidden logout-btn">Sign Out</a>
@@ -68,7 +68,7 @@
         <input type="text" id="loginCode" placeholder="e.g. SMITH-001" autocomplete="off">
         <div id="loginError" class="error hidden"></div>
         <button class="btn btn-primary" onclick="login()">View Dashboard</button>
-        <div class="hint">Don't have a code? <a href="https://app.younggrasshopper.io/">Start a free demo</a></div>
+        <div class="hint">Don't have a code? <a href="https://app.grasshopperdojo.com/">Start a free demo</a></div>
       </div>
     </div>
 
@@ -76,7 +76,7 @@
   </div>
 
   <script>
-    const API = 'https://app.younggrasshopper.io';
+    const API = 'https://app.grasshopperdojo.com';
 
     async function login() {
       const code = document.getElementById('loginCode').value.trim().toUpperCase();
@@ -161,7 +161,7 @@
           <div class="step"><div class="step-num">1</div><div><strong>Tell us about your business</strong><br><span style="color:#8892a4;font-size:0.85rem">Name, address, phone to get started</span></div></div>
           <div class="step"><div class="step-num">2</div><div><strong>Add your invoices</strong><br><span style="color:#8892a4;font-size:0.85rem">Manual entry or connect QuickBooks/Xero</span></div></div>
           <div class="step"><div class="step-num">3</div><div><strong>We do the work</strong><br><span style="color:#8892a4;font-size:0.85rem">Sit back — we handle everything</span></div></div>
-          <a href="https://app.younggrasshopper.io/" class="btn btn-primary" style="margin-top:16px;max-width:300px;text-decoration:none">→ Complete Your Setup</a>
+          <a href="https://app.grasshopperdojo.com/" class="btn btn-primary" style="margin-top:16px;max-width:300px;text-decoration:none">→ Complete Your Setup</a>
         </div>`}
         ${inv.length ? '<div class="card"><h3 style="margin-bottom:12px">📄 Invoices</h3><table><tr><th>Invoice</th><th>Amount</th><th>Due</th><th>Status</th></tr>' + invRows + '</table></div>' : ''}
         <div class="card" style="text-align:center;border-color:rgba(110,231,183,0.15)">

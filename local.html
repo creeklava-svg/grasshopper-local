@@ -34,6 +34,12 @@
     .pricing-card { background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(255,255,255,0.06)); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 40px; text-align: center; max-width: 400px; margin: 0 auto; }
     .pricing-card .price-big { font-size: 3rem; font-weight: 800; color: #fff; margin: 12px 0; }
     .pricing-card .price-big small { font-size: 1rem; color: #8892a4; font-weight: 400; }
+    .pricing-grid { display: flex; flex-wrap: wrap; gap: 24px; justify-content: center; align-items: stretch; }
+    .pricing-grid .pricing-card { flex: 1; min-width: 260px; max-width: 340px; margin: 0; display: flex; flex-direction: column; justify-content: space-between; }
+    .pricing-card.featured { border-color: rgba(110,231,183,0.45); box-shadow: 0 0 32px rgba(110,231,183,0.08); position: relative; }
+    .pricing-card.featured::before { content: "MOST POPULAR"; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #6ee7b7; color: #06281c; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; padding: 4px 14px; border-radius: 999px; }
+    .pricing-card h4 { font-size: 1rem; font-weight: 600; color: #8892a4; margin-bottom: 8px; }
+    .pricing-card .desc { color: #8892a4; font-size: 0.85rem; margin: 12px 0 24px; }
 
     .section { padding: 60px 0; }
     .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 32px; }
@@ -51,7 +57,7 @@
 <body>
   <nav>
     <div class="container">
-      <a href="/" class="logo">Grasshopper<span style="font-weight:300;">Local</span></a>
+      <a href="/" class="logo" style="display:flex; flex-direction:column; align-items:flex-start; line-height:1.12; text-decoration:none; flex-shrink:0;"><span style="font-size:2.1rem; white-space:nowrap;">Grasshopper<span style="font-weight:300;">Dojo</span></span><span style="font-size:0.55rem; font-weight:500; letter-spacing:0.05em; color:#6f9c88; background:none; -webkit-text-fill-color:#6f9c88; margin-top:2px; white-space:nowrap;">a younggrasshopper llc company</span></a>
       <div style="display:flex; gap:20px; align-items:center;">
         <a href="/">Home</a>
         <a href="collect.html">Collect</a>
@@ -59,7 +65,7 @@
         <a href="comply.html">Comply</a>
         <a href="dashboard.html">Dashboard</a>
         <a href="/#contact">Contact</a>
-        <a href="https://app.younggrasshopper.io/" class="btn btn-primary" style="padding:8px 20px;">Try Free Demo</a>
+        <a href="https://app.grasshopperdojo.com/" class="btn btn-primary" style="padding:8px 20px;">Try Free Demo</a>
       </div>
     </div>
   </nav>
@@ -68,8 +74,8 @@
     <div class="container">
       <div style="font-size:0.8rem; color:#6ee7b7; font-weight:600; letter-spacing:1px; text-transform:uppercase; margin-bottom:12px;">Grasshopper Local</div>
       <h1>Get found on Google. Automatically.</h1>
-      <p>Done-for-you local SEO for Iowa businesses. We optimize your Google Business Profile, build citations, create content, and manage reviews — all on autopilot for $79/month.</p>
-      <a href="https://app.younggrasshopper.io/" class="btn btn-primary">Try a Free Demo →</a>
+      <p>Done-for-you local SEO for Iowa businesses. We optimize your Google Business Profile, build citations, create content, and manage reviews — all on autopilot, starting at $79/month.</p>
+      <a href="https://app.grasshopperdojo.com/" class="btn btn-primary">Try a Free Demo →</a>
     </div>
   </section>
 
@@ -153,20 +159,40 @@
 
   <section class="section">
     <div class="container">
-      <div class="pricing-card">
-        <div style="font-size:0.8rem; color:#6ee7b7; font-weight:600; text-transform:uppercase;">Simple Pricing</div>
-        <div class="price-big">$79 <small>/mo</small></div>
-        <p style="color:#8892a4; margin-bottom:24px;">14-day free trial. No contracts. Cancel anytime.</p>
-        <a href="https://app.younggrasshopper.io/" class="btn btn-primary">Try a Free Demo →</a>
+      <div style="text-align:center; font-size:0.8rem; color:#6ee7b7; font-weight:600; text-transform:uppercase; margin-bottom:8px;">Simple Pricing</div>
+      <h2 style="text-align:center;">Three tiers. One goal: get you found.</h2>
+      <p style="text-align:center; color:#8892a4; max-width:640px; margin:12px auto 0;">Start with Standard, upgrade anytime — Pro and Max add the done-for-you layers. 14-day free trial on every tier. No contracts. Cancel anytime.</p>
+      <div class="pricing-grid" style="margin-top:32px;">
+        <div class="pricing-card">
+          <h4>Standard</h4>
+          <div class="price-big">$79 <small>/mo</small></div>
+          <p class="desc">SEO foundation — Google Business Profile optimization, weekly posts, citation maintenance, review responses. The essentials, on autopilot.</p>
+          <a href="https://app.grasshopperdojo.com/" class="btn btn-outline">Try a Free Demo →</a>
+        </div>
+
+        <div class="pricing-card featured">
+          <h4>Pro</h4>
+          <div class="price-big">$149 <small>/mo</small></div>
+          <p class="desc">Everything in Standard, plus: review generation, weekly blog content, social media, video scripts, and hyperlocal outreach. For businesses ready to grow faster.</p>
+          <a href="https://app.grasshopperdojo.com/" class="btn btn-primary">Try a Free Demo →</a>
+        </div>
+
+        <div class="pricing-card">
+          <h4>Max</h4>
+          <div class="price-big">$299 <small>/mo</small></div>
+          <p class="desc">Everything in Pro — done for you: your agent publishes all content, manages ads, and handles PR &amp; partnerships. For businesses that want it fully handled.</p>
+          <a href="https://app.grasshopperdojo.com/" class="btn btn-outline">Try a Free Demo →</a>
+        </div>
       </div>
+      <p style="text-align:center; color:#5a6478; font-size:0.85rem; margin-top:28px;">Every tier includes a 14-day free trial, no contracts, cancel anytime. Each tier does more for you — upgrade or downgrade anytime from your dashboard.</p>
     </div>
   </section>
 
   <section class="cta">
     <div class="container">
       <h2>Ready to get found on Google?</h2>
-      <p>Join other Iowa businesses using the Grasshopper Local to grow their online presence.</p>
-      <a href="https://app.younggrasshopper.io/" class="btn btn-primary">Try a Free Demo →</a>
+      <p>Join other Iowa businesses using Grasshopper Local to grow their online presence.</p>
+      <a href="https://app.grasshopperdojo.com/" class="btn btn-primary">Try a Free Demo →</a>
     </div>
   </section>
 
