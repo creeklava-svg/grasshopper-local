@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grasshopper Reviews — AI Review Replies | Grasshopper Dojo</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+    body { background: #080c14; color: #e0e6f0; font-family: 'Inter', sans-serif; margin: 0; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    nav { background: rgba(8,12,20,0.85); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.06); position: fixed; top: 0; left: 0; right: 0; z-index: 100; }
+    nav .container { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+    nav a { color: #8892a4; text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+    nav a:hover { color: #6ee7b7; }
+    nav .logo { font-size: 1.4rem; font-weight: 700; background: linear-gradient(135deg, #6ee7b7, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; border-radius: 10px; font-size: 0.9rem; font-weight: 600; text-decoration: none; transition: all 0.2s; cursor: pointer; border: none; }
+    .btn-primary { background: linear-gradient(135deg, #6ee7b7, #3b82f6); color: #080c14; }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(110,231,183,0.2); }
+    .btn-outline { border: 1px solid rgba(255,255,255,0.15); color: #e0e6f0; background: transparent; }
+    .btn-outline:hover { border-color: #6ee7b7; color: #6ee7b7; }
+
+    .hero { padding: 140px 0 60px; text-align: center; }
+    .hero h1 { font-size: 3.2rem; font-weight: 800; letter-spacing: -2px; background: linear-gradient(135deg, #fff, #6ee7b7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1.1; margin-bottom: 16px; }
+    .hero p { font-size: 1.15rem; color: #8892a4; max-width: 600px; margin: 0 auto 32px; }
+    .badge-live { display: inline-block; padding: 4px 14px; border-radius: 100px; background: rgba(110,231,183,0.15); color: #6ee7b7; font-size: 0.8rem; font-weight: 600; margin-bottom: 16px; }
+
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; margin: 48px 0; }
+    .step { text-align: center; padding: 24px; }
+    .step .num { width: 48px; height: 48px; border-radius: 50%; background: rgba(110,231,183,0.1); color: #6ee7b7; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.2rem; margin: 0 auto 16px; }
+    .step h3 { font-size: 1.1rem; margin-bottom: 8px; }
+    .step p { font-size: 0.85rem; color: #8892a4; }
+
+    .tiers { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 32px; }
+    .tier { background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(255,255,255,0.06)); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 32px; }
+    .tier.featured { border-color: #6ee7b7; box-shadow: 0 0 40px rgba(110,231,183,0.08); }
+    .tier .price-big { font-size: 2.6rem; font-weight: 800; color: #fff; margin: 12px 0; }
+    .tier .price-big small { font-size: 1rem; color: #8892a4; font-weight: 400; }
+    .tier .tier-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+    .tier ul { list-style: none; padding: 0; margin: 16px 0 24px; }
+    .tier ul li { padding: 6px 0; font-size: 0.85rem; color: #8892a4; display: flex; align-items: center; gap: 8px; }
+    .tier ul li::before { content: '✓'; color: #6ee7b7; font-weight: 700; }
+
+    .section { padding: 60px 0; }
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 32px; }
+    .card { background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(255,255,255,0.06)); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 24px; }
+    .card h3 { font-size: 1.1rem; margin-bottom: 12px; }
+    .card ul { list-style: none; padding: 0; }
+    .card ul li { padding: 6px 0; font-size: 0.85rem; color: #8892a4; display: flex; align-items: center; gap: 8px; }
+    .card ul li::before { content: '✓'; color: #6ee7b7; font-weight: 700; }
+
+    .cta { text-align: center; padding: 80px 0; }
+    .cta h2 { font-size: 2rem; margin-bottom: 12px; }
+    .cta p { color: #8892a4; margin-bottom: 24px; }
+    .honest { max-width: 720px; margin: 0 auto; background: rgba(251,191,36,0.06); border: 1px solid rgba(251,191,36,0.2); border-radius: 12px; padding: 20px 24px; font-size: 0.85rem; color: #c9b16b; }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="container">
+      <a href="/" class="logo" style="display:flex; flex-direction:column; align-items:flex-start; line-height:1.12; text-decoration:none; flex-shrink:0;"><span style="font-size:2.1rem; white-space:nowrap;">Grasshopper<span style="font-weight:300;">Dojo</span></span><span style="font-size:0.55rem; font-weight:500; letter-spacing:0.05em; color:#6f9c88; background:none; -webkit-text-fill-color:#6f9c88; margin-top:2px; white-space:nowrap;">a younggrasshopper llc company</span></a>
+      <div style="display:flex; gap:20px; align-items:center;">
+        <a href="/">Home</a>
+        <a href="local.html">Local</a>
+        <a href="collect.html">Collect</a>
+        <a href="comply.html">Comply</a>
+        <a href="reviews.html" style="color:#6ee7b7;">Reviews</a>
+        <a href="hoa.html">HOA</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="contact.html">Contact</a>
+        <a href="https://app.grasshopperdojo.com/" class="btn btn-outline" style="padding:8px 20px;">Try Free Demo</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="container">
+      <div class="badge-live">● Live</div>
+      <div style="font-size:0.8rem; color:#6ee7b7; font-weight:600; letter-spacing:1px; text-transform:uppercase; margin-bottom:12px;">Grasshopper Reviews</div>
+      <h1>Never leave a review<br>unanswered again.</h1>
+      <p>AI scores every review, drafts an on-brand reply, and flags the ones that need you. You approve before anything is sent — nothing posts without your OK.</p>
+      <a href="https://app.grasshopperdojo.com/" class="btn btn-primary">Try a Free Demo →</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div style="text-align:center;">
+        <div style="font-size:0.8rem; color:#6ee7b7; font-weight:600; letter-spacing:1px; text-transform:uppercase; margin-bottom:8px;">How It Works</div>
+        <h2 style="font-size:1.8rem; font-weight:700;">Every review, handled</h2>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="num">1</div>
+          <h3>Add Your Business</h3>
+          <p>Name + Google Maps link, once. Your reviews start flowing in.</p>
+        </div>
+        <div class="step">
+          <div class="num">2</div>
+          <h3>AI Scores Each Review</h3>
+          <p>Every review gets a 0–100 score with a plain-English reason — so you instantly know what matters.</p>
+        </div>
+        <div class="step">
+          <div class="num">3</div>
+          <h3>We Draft the Reply</h3>
+          <p>An on-brand reply is drafted for you, in your tone. 1–2★ reviews auto-escalate to you first.</p>
+        </div>
+        <div class="step">
+          <div class="num">4</div>
+          <h3>You Approve, Then It Goes Out</h3>
+          <p>You approve, copy, and post. Or with Auto-Connect, reviews come in and post automatically. Nothing sends without your OK.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div style="text-align:center; margin-bottom:32px;">
+        <div style="font-size:0.8rem; color:#6ee7b7; font-weight:600; letter-spacing:1px; text-transform:uppercase; margin-bottom:8px;">Pricing</div>
+        <h2 style="font-size:1.8rem; font-weight:700;">Start with copy &amp; paste, upgrade to auto</h2>
+      </div>
+      <div class="tiers">
+        <div class="tier">
+          <div style="color:#8892a4;" class="tier-label">Copy &amp; Paste</div>
+          <div class="price-big">$19 <small>/mo</small></div>
+          <ul>
+            <li>AI review scoring (0–100) with reasons</li>
+            <li>Drafted on-brand replies in your tone</li>
+            <li>1–2★ reviews auto-escalate to you</li>
+            <li>You approve, copy, and paste on Google</li>
+            <li>Works today — zero setup</li>
+          </ul>
+          <a href="https://app.grasshopperdojo.com/" class="btn btn-outline" style="width:100%; justify-content:center;">Start with Copy &amp; Paste</a>
+        </div>
+        <div class="tier featured">
+          <div style="color:#6ee7b7;" class="tier-label">Auto-Connect</div>
+          <div class="price-big">$49 <small>/mo</small></div>
+          <ul>
+            <li>Everything in Copy &amp; Paste</li>
+            <li>Connect your Google account once</li>
+            <li>Reviews come in automatically</li>
+            <li>Approve → posted for you</li>
+            <li>No copying, no pasting</li>
+          </ul>
+          <a href="https://app.grasshopperdojo.com/" class="btn btn-primary" style="width:100%; justify-content:center;">Go Auto-Connect</a>
+        </div>
+      </div>
+      <div class="honest" style="margin-top:32px;">
+        <b>Honest status:</b> Copy &amp; paste mode works today with zero setup. Live Google sync + connected posting go live when our Google API access is approved — the same approval every review app (Podium included) goes through. Your replies are never sent without your one-click approval. 14-day free trial. No contracts. Cancel anytime.
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div style="text-align:center; margin-bottom:32px;">
+        <div style="font-size:0.8rem; color:#6ee7b7; font-weight:600; letter-spacing:1px; text-transform:uppercase; margin-bottom:8px;">Features</div>
+        <h2 style="font-size:1.8rem; font-weight:700;">Everything included</h2>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <h3>🧠 AI Review Scoring</h3>
+          <ul>
+            <li>Every review scored 0–100</li>
+            <li>Plain-English reason for each score</li>
+            <li>Severe signals capped and flagged</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>✍️ Drafted Replies</h3>
+          <ul>
+            <li>On-brand replies in your tone</li>
+            <li>Professional, Warm, or Concise</li>
+            <li>Regenerate until it feels right</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>🚨 Needs Attention Queue</h3>
+          <ul>
+            <li>1–2★ reviews auto-escalate to you</li>
+            <li>Escalate the ones that need a human</li>
+            <li>Nothing sensitive slips through</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>🔒 You Stay In Control</h3>
+          <ul>
+            <li>Approve before anything is sent</li>
+            <li>Copy &amp; paste, or auto-post</li>
+            <li>FTC-safe — never incentivize reviews</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <h2>Ready to answer every review?</h2>
+      <p>Start free for 14 days. No contracts. Cancel anytime.</p>
+      <a href="https://app.grasshopperdojo.com/" class="btn btn-primary">Try a Free Demo →</a>
+    </div>
+  </section>
+
+  <footer style="border-top:1px solid rgba(255,255,255,0.06); padding:32px 0; text-align:center;">
+    <p style="color:#8892a4; font-size:0.85rem;">© 2026 Young Grasshopper LLC — <a href="/" style="color:#6ee7b7; text-decoration:none;">Grasshopper Dojo</a></p>
+  </footer>
+</body>
+</html>
