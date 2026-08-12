@@ -30,15 +30,16 @@
     .step h3 { font-size: 1.1rem; margin-bottom: 8px; }
     .step p { font-size: 0.85rem; color: #8892a4; }
 
-    .tiers { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 32px; }
-    .tier { background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(255,255,255,0.06)); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 32px; }
+    .tiers { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 32px; align-items: stretch; }
+    .tier { background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(255,255,255,0.06)); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 32px; display: flex; flex-direction: column; }
     .tier.featured { border-color: #6ee7b7; box-shadow: 0 0 40px rgba(110,231,183,0.08); }
     .tier .price-big { font-size: 2.6rem; font-weight: 800; color: #fff; margin: 12px 0; }
     .tier .price-big small { font-size: 1rem; color: #8892a4; font-weight: 400; }
     .tier .tier-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
-    .tier ul { list-style: none; padding: 0; margin: 16px 0 24px; }
+    .tier ul { list-style: none; padding: 0; margin: 16px 0 24px; flex-grow: 1; }
     .tier ul li { padding: 6px 0; font-size: 0.85rem; color: #8892a4; display: flex; align-items: center; gap: 8px; }
     .tier ul li::before { content: '✓'; color: #6ee7b7; font-weight: 700; }
+    .tier .btn { width: 100%; justify-content: center; margin-top: 0; }
 
     .section { padding: 60px 0; }
     .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 32px; }
