@@ -116,7 +116,7 @@
           </div>
         </div>
 
-        <form class="contact-form" action="https://formspree.io/f/hello@grasshopperdojo.com" method="POST">
+        <form class="contact-form" id="contactForm">
           <label for="name">Your Name</label>
           <input type="text" id="name" name="name" placeholder="John Smith" required>
 
@@ -139,8 +139,42 @@
           <label for="message">Message</label>
           <textarea id="message" name="message" placeholder="Tell us how we can help..." required></textarea>
 
-          <button type="submit" class="btn btn-primary">Send Message →</button>
+          <button type="submit" class="btn btn-primary" id="contactSubmit">Send Message →</button>
+          <p id="contactStatus" style="margin-top:16px; color:#6ee7b7; font-size:0.85rem;"></p>
         </form>
+        <script>
+          document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            var st = document.getElementById('contactStatus');
+            var btn = document.getElementById('contactSubmit');
+            var service = document.getElementById('service');
+            var payload = {
+              name: document.getElementById('name').value,
+              email: document.getElementById('email').value,
+              subject: 'Site contact' + (service && service.value ? ' — ' + service.value : ''),
+              message: document.getElementById('message').value
+            };
+            btn.disabled = true; btn.textContent = 'Sending…';
+            fetch('https://app.grasshopperdojo.com/api/contact', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload)
+            }).then(function (r) { return r.json(); }).then(function (d) {
+              if (d && d.ok) {
+                st.textContent = '✓ Message sent — we reply within a day.';
+                document.getElementById('contactForm').reset();
+              } else {
+                st.style.color = '#f87171';
+                st.textContent = 'Could not send — please email hello@grasshopperdojo.com.';
+              }
+            }).catch(function () {
+              st.style.color = '#f87171';
+              st.textContent = 'Could not send — please email hello@grasshopperdojo.com.';
+            }).finally(function () {
+              btn.disabled = false; btn.textContent = 'Send Message →';
+            });
+          });
+        </script>
       </div>
     </div>
   </section>
