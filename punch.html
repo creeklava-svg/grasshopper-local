@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grasshopper Punch — Crew Time Tracking | Grasshopper Dojo</title>
+  <style>
+    body { background: #080c14; color: #e0e6f0; font-family: 'Inter', sans-serif; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    nav { background: rgba(8,12,20,0.85); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.06); position: fixed; top: 0; left: 0; right: 0; z-index: 100; }
+    nav .container { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+    nav a { color: #8892a4; text-decoration: none; font-size: 0.9rem; }
+    nav .logo { font-size: 1.4rem; font-weight: 700; background: linear-gradient(135deg, #6ee7b7, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; border-radius: 10px; font-size: 0.9rem; font-weight: 600; text-decoration: none; transition: all 0.2s; cursor: pointer; border: none; }
+    .btn-primary { background: linear-gradient(135deg, #6ee7b7, #3b82f6); color: #080c14; }
+    .btn-outline { border: 1px solid rgba(255,255,255,0.15); color: #e0e6f0; background: transparent; }
+
+    .hero { padding: 140px 0 60px; text-align: center; }
+    .hero h1 { font-size: 3.2rem; font-weight: 800; letter-spacing: -2px; background: linear-gradient(135deg, #fff, #6ee7b7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1.1; margin-bottom: 16px; }
+    .hero p { font-size: 1.15rem; color: #8892a4; max-width: 640px; margin: 0 auto 32px; }
+
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; margin: 48px 0; }
+    .step { text-align: center; padding: 24px; }
+    .step .num { width: 48px; height: 48px; border-radius: 50%; background: rgba(110,231,183,0.1); color: #6ee7b7; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.2rem; margin: 0 auto 16px; }
+    .step h3 { font-size: 1.1rem; margin-bottom: 8px; }
+    .step p { font-size: 0.85rem; color: #8892a4; }
+
+    .pricing-card { background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(255,255,255,0.06)); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 40px; text-align: center; max-width: 400px; margin: 0 auto; }
+    .pricing-card .price-big { font-size: 3rem; font-weight: 800; color: #fff; margin: 12px 0; }
+    .pricing-card .price-big small { font-size: 1rem; color: #8892a4; font-weight: 400; }
+
+    .section { padding: 60px 0; }
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 32px; }
+    .card { background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(255,255,255,0.06)); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 24px; }
+    .card h3 { font-size: 1.1rem; margin-bottom: 12px; }
+    .card ul { list-style: none; }
+    .card ul li { padding: 6px 0; font-size: 0.85rem; color: #8892a4; display: flex; align-items: center; gap: 8px; }
+    .card ul li::before { content: '✓'; color: #6ee7b7; font-weight: 700; }
+
+    .cta { text-align: center; padding: 80px 0; }
+    .cta h2 { font-size: 2rem; margin-bottom: 12px; }
+    .cta p { color: #8892a4; margin-bottom: 24px; }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="container">
+      <a href="/" class="logo" style="display:flex; flex-direction:column; align-items:flex-start; line-height:1.12; text-decoration:none; flex-shrink:0;"><span style="font-size:2.1rem; white-space:nowrap;">Grasshopper<span style="font-weight:300;">Dojo</span></span><span style="font-size:0.55rem; font-weight:500; letter-spacing:0.05em; color:#6f9c88; background:none; -webkit-text-fill-color:#6f9c88; margin-top:2px; white-space:nowrap;">a younggrasshopper llc company</span></a>
+      <div style="display:flex; gap:20px; align-items:center;">
+        <a href="/">Home</a>
+        <a href="local.html">Local</a>
+        <a href="collect.html">Collect</a>
+        <a href="pulse.html">Pulse</a>
+        <a href="comply.html">Comply</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="hoa.html">HOA</a>
+        <a href="https://app.grasshopperdojo.com/" class="btn btn-primary" style="padding:8px 20px;">Client Portal →</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="container">
+      <div style="font-size:0.8rem; color:#6ee7b7; font-weight:600; letter-spacing:1px; text-transform:uppercase; margin-bottom:12px;">Grasshopper Punch · Dojo Product</div>
+      <h1>Your crew, on the clock. GPS-verified.</h1>
+      <p>One-tap clock in/out from the jobsite, GPS geofences that catch the punches, job costing on every hour, and payroll exports your accountant will love. Part of your Grasshopper Dojo dashboard — $79/mo, no contracts.</p>
+      <a href="https://app.grasshopperdojo.com/" class="btn btn-primary">Open in Your Dashboard →</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div style="text-align:center;">
+        <div style="font-size:0.8rem; color:#6ee7b7; font-weight:600; letter-spacing:1px; text-transform:uppercase; margin-bottom:8px;">How It Works</div>
+        <h2 style="font-size:1.8rem; font-weight:700;">Crew punches, you get paid</h2>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="num">1</div>
+          <h3>Add Your Crew</h3>
+          <p>Send each worker a link — they sign in on their phone with a tap. No app-store install needed.</p>
+        </div>
+        <div class="step">
+          <div class="num">2</div>
+          <h3>Set Job Sites</h3>
+          <p>Draw a geofence around each project. Crew inside the fence clock in with one tap — GPS timestamps every punch.</p>
+        </div>
+        <div class="step">
+          <div class="num">3</div>
+          <h3>Track Hours &amp; Cost</h3>
+          <p>Live timecards, job costing against budgets, overtime flags. Crew see only their own hours.</p>
+        </div>
+        <div class="step">
+          <div class="num">4</div>
+          <h3>Export Payroll</h3>
+          <p>Clean CSV exports per job — ready for QuickBooks, your accountant, or payroll.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div style="text-align:center; margin-bottom:32px;">
+        <div style="font-size:0.8rem; color:#6ee7b7; font-weight:600; letter-spacing:1px; text-transform:uppercase; margin-bottom:8px;">Features</div>
+        <h2 style="font-size:1.8rem; font-weight:700;">Everything included</h2>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <h3>⏱️ One-Tap Clock In/Out</h3>
+          <ul>
+            <li>Phone, tablet, or desktop</li>
+            <li>GPS-verified punch timestamps</li>
+            <li>Offline queue — punches sync when signal returns</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>📍 GPS Geofences</h3>
+          <ul>
+            <li>Set a fence around each job site</li>
+            <li>Crew clock in only inside the fence</li>
+            <li>Time &amp; location on every punch</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>📊 Job Costing &amp; Budgets</h3>
+          <ul>
+            <li>Hours tracked per project &amp; cost code</li>
+            <li>Budget hours &amp; labor vs. actual</li>
+            <li>Overtime flags before payroll</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>💼 Payroll Exports</h3>
+          <ul>
+            <li>CSV export per job or whole company</li>
+            <li>QuickBooks-friendly format</li>
+            <li>Invite flow — crew never share passwords</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="pricing-card">
+        <div style="font-size:0.8rem; color:#6ee7b7; font-weight:600; text-transform:uppercase;">One Price</div>
+        <div class="price-big">$79 <small>/mo</small></div>
+        <p style="color:#8892a4; margin-bottom:24px;">Unlimited crew. No contracts. Cancel anytime. Part of your Grasshopper Dojo subscription.</p>
+        <a href="https://app.grasshopperdojo.com/" class="btn btn-primary">Open in Your Dashboard →</a>
+        <p style="color:#5a6478; font-size:0.8rem; margin-top:12px;">Free demo — no credit card needed. <a href="https://app.grasshopperdojo.com/" style="color:#6ee7b7;">Start now →</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <h2>Know exactly what every hour costs.</h2>
+      <p>Join Iowa contractors running their crew on Grasshopper Dojo.</p>
+      <a href="https://app.grasshopperdojo.com/" class="btn btn-primary">Open in Your Dashboard →</a>
+    </div>
+  </section>
+
+  <footer style="border-top:1px solid rgba(255,255,255,0.06); padding:32px 0; text-align:center;">
+    <p style="color:#8892a4; font-size:0.85rem;">© 2026 Young Grasshopper LLC — <a href="/" style="color:#6ee7b7; text-decoration:none;">Grasshopper Dojo</a></p>
+  </footer>
+</body>
+</html>
